@@ -15,7 +15,7 @@ enum FirebaseTable {
     
     var table: String {
         switch self {
-        case .listUser:
+        case .listPhone:
             return "listPhone"
         }
     }

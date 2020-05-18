@@ -98,7 +98,7 @@ class AddCustom: UIViewController {
                 wSelf.showAlert()
             }
             let dataDic = ["status": strFB, "type": numberPhone, "price":userName, "imagePhone": self.imgBase64]
-            FirebaseDatabase.instance.ref.child("\(FirebaseTable.listUser.table)").childByAutoId().setValue(dataDic)
+            FirebaseDatabase.instance.ref.child("\(FirebaseTable.listPhone.table)").childByAutoId().setValue(dataDic)
         }).disposed(by: disposebag)
         
         self.tapGesture.rx.event.bind(onNext: weakify { (user, wSelf) in

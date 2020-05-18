@@ -45,7 +45,7 @@ class HomeTabbar: UITabBarController {
         //        let home = HomeScreenVC()
         let home = HomeScreenVC(nibName: "HomeScreenVC", bundle: nil)
         let search = AddCustom(nibName: "AddCustom", bundle: nil)
-        let notify = HomeScreenVC(nibName: "HomeScreenVC", bundle: nil)
+        let notify = FeedBacckVC(nibName: "FeedBacckVC", bundle: nil)
         //        let profile = ProfileVC(nibName: "ProfileVC", bundle: nil)
         let profile = HomeScreenVC(nibName: "HomeScreenVC", bundle: nil)
         //        ProfileVC

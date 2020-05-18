@@ -31,7 +31,7 @@ class HomeScreenVC: UIViewController, ActivityTrackingProgressProtocol {
     }
     private func setupRX() {
         LoadingManager.instance.show()
-        self.ref.child("\(FirebaseTable.listUser.table)").observe(.childAdded) { (data) in
+        self.ref.child("\(FirebaseTable.listPhone.table)").observe(.childAdded) { (data) in
             if let user = self.convertDataSnapshotToCodable(data: data, type: UserInfo.self) {
                 self.dataSource.append(user)
                 self.collectionView.reloadData()
