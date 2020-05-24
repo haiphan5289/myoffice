@@ -12,11 +12,14 @@ import UIKit
 
 enum FirebaseTable {
     case listPhone
+    case listFeedBack
     
     var table: String {
         switch self {
         case .listPhone:
             return "listPhone"
+        case .listFeedBack:
+            return "listFeedBack"
         }
     }
 }

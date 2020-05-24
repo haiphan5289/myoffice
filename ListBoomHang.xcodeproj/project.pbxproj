@@ -10,6 +10,14 @@
 		521ADFA52465A07E00BD1B3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521ADFA42465A07E00BD1B3C /* GoogleService-Info.plist */; };
 		521ADFA82465A7DD00BD1B3C /* CellProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ADFA62465A7DD00BD1B3C /* CellProduct.swift */; };
 		521ADFA92465A7DD00BD1B3C /* CellProduct.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521ADFA72465A7DD00BD1B3C /* CellProduct.xib */; };
+		5247C86F247AA57300E0622B /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C86D247AA57300E0622B /* ContactVC.swift */; };
+		5247C870247AA57300E0622B /* ContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C86E247AA57300E0622B /* ContactVC.xib */; };
+		5247C874247AA8B400E0622B /* TipsApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C872247AA8B400E0622B /* TipsApple.swift */; };
+		5247C875247AA8B400E0622B /* TipsApple.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C873247AA8B400E0622B /* TipsApple.xib */; };
+		5247C879247AAA7400E0622B /* TipsAppleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C877247AAA7400E0622B /* TipsAppleCell.swift */; };
+		5247C87A247AAA7400E0622B /* TipsAppleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C878247AAA7400E0622B /* TipsAppleCell.xib */; };
+		5247C87D247AAD1000E0622B /* TipsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C87C247AAD1000E0622B /* TipsDTO.swift */; };
+		5247C880247AAF2F00E0622B /* FeedbackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C87F247AAF2F00E0622B /* FeedbackDTO.swift */; };
 		524D42842453207800F63E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D42832453207800F63E51 /* AppDelegate.swift */; };
 		524D42862453207800F63E51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D42852453207800F63E51 /* ViewController.swift */; };
 		524D42892453207800F63E51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524D42872453207800F63E51 /* Main.storyboard */; };
@@ -41,6 +49,14 @@
 		521ADFA42465A07E00BD1B3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		521ADFA62465A7DD00BD1B3C /* CellProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProduct.swift; sourceTree = "<group>"; };
 		521ADFA72465A7DD00BD1B3C /* CellProduct.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellProduct.xib; sourceTree = "<group>"; };
+		5247C86D247AA57300E0622B /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
+		5247C86E247AA57300E0622B /* ContactVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactVC.xib; sourceTree = "<group>"; };
+		5247C872247AA8B400E0622B /* TipsApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsApple.swift; sourceTree = "<group>"; };
+		5247C873247AA8B400E0622B /* TipsApple.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipsApple.xib; sourceTree = "<group>"; };
+		5247C877247AAA7400E0622B /* TipsAppleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsAppleCell.swift; sourceTree = "<group>"; };
+		5247C878247AAA7400E0622B /* TipsAppleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipsAppleCell.xib; sourceTree = "<group>"; };
+		5247C87C247AAD1000E0622B /* TipsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsDTO.swift; sourceTree = "<group>"; };
+		5247C87F247AAF2F00E0622B /* FeedbackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDTO.swift; sourceTree = "<group>"; };
 		524D42802453207800F63E51 /* ListBoomHang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListBoomHang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524D42832453207800F63E51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524D42852453207800F63E51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +105,51 @@
 				C4CA71D958FFE4D6F5743229 /* Pods-ListBoomHang.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5247C86C247AA55500E0622B /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				5247C86D247AA57300E0622B /* ContactVC.swift */,
+				5247C86E247AA57300E0622B /* ContactVC.xib */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		5247C871247AA89900E0622B /* TipsApple */ = {
+			isa = PBXGroup;
+			children = (
+				5247C87B247AACF400E0622B /* Model */,
+				5247C876247AAA5B00E0622B /* cell */,
+				5247C872247AA8B400E0622B /* TipsApple.swift */,
+				5247C873247AA8B400E0622B /* TipsApple.xib */,
+			);
+			path = TipsApple;
+			sourceTree = "<group>";
+		};
+		5247C876247AAA5B00E0622B /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				5247C877247AAA7400E0622B /* TipsAppleCell.swift */,
+				5247C878247AAA7400E0622B /* TipsAppleCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		5247C87B247AACF400E0622B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5247C87C247AAD1000E0622B /* TipsDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5247C87E247AAF1E00E0622B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5247C87F247AAF2F00E0622B /* FeedbackDTO.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		524D42772453207800F63E51 = {
@@ -159,6 +220,8 @@
 				52CC60A2245326A100125139 /* HomeTabar */,
 				52CC60A92453274500125139 /* HomeScreen */,
 				52F427752472DB1C00F9BB1C /* FeedBack */,
+				5247C86C247AA55500E0622B /* Contact */,
+				5247C871247AA89900E0622B /* TipsApple */,
 				52CC60B624532F2D00125139 /* AddCustom */,
 			);
 			path = Modules;
@@ -215,6 +278,7 @@
 		52F427752472DB1C00F9BB1C /* FeedBack */ = {
 			isa = PBXGroup;
 			children = (
+				5247C87E247AAF1E00E0622B /* Model */,
 				52F4277A2472DB5900F9BB1C /* cell */,
 				52F427762472DB3A00F9BB1C /* FeedBacckVC.swift */,
 				52F427772472DB3A00F9BB1C /* FeedBacckVC.xib */,
@@ -300,9 +364,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5247C87A247AAA7400E0622B /* TipsAppleCell.xib in Resources */,
 				524D42912453207A00F63E51 /* LaunchScreen.storyboard in Resources */,
 				52F4277E2472DB7500F9BB1C /* FeedbBackCell.xib in Resources */,
 				52CC60AD2453276000125139 /* HomeScreenVC.xib in Resources */,
+				5247C870247AA57300E0622B /* ContactVC.xib in Resources */,
 				52CC60BA24532F5100125139 /* AddCustom.xib in Resources */,
 				521ADFA92465A7DD00BD1B3C /* CellProduct.xib in Resources */,
 				521ADFA52465A07E00BD1B3C /* GoogleService-Info.plist in Resources */,
@@ -310,6 +376,7 @@
 				524D428E2453207A00F63E51 /* Assets.xcassets in Resources */,
 				524D42892453207800F63E51 /* Main.storyboard in Resources */,
 				52CC60B22453295300125139 /* HomeScreenCell.xib in Resources */,
+				5247C875247AA8B400E0622B /* TipsApple.xib in Resources */,
 				52CC60A6245326DB00125139 /* HomeTabbar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				525E3EB72455B9D7009EA3FE /* Tracking.swift in Sources */,
+				5247C87D247AAD1000E0622B /* TipsDTO.swift in Sources */,
 				52CC60B924532F5100125139 /* AddCustom.swift in Sources */,
 				52CC60A82453271300125139 /* Extension.swift in Sources */,
 				52CC60A5245326DB00125139 /* HomeTabbar.swift in Sources */,
@@ -390,11 +458,15 @@
 				5265A30B24533DC500DCD25C /* FirebaseDatabase.swift in Sources */,
 				524D428C2453207800F63E51 /* ListBoomHang.xcdatamodeld in Sources */,
 				52F427782472DB3B00F9BB1C /* FeedBacckVC.swift in Sources */,
+				5247C879247AAA7400E0622B /* TipsAppleCell.swift in Sources */,
 				52CC60B524532CE800125139 /* Color.swift in Sources */,
+				5247C874247AA8B400E0622B /* TipsApple.swift in Sources */,
 				52F4277D2472DB7500F9BB1C /* FeedbBackCell.swift in Sources */,
 				52CC60B12453295300125139 /* HomeScreenCell.swift in Sources */,
+				5247C880247AAF2F00E0622B /* FeedbackDTO.swift in Sources */,
 				52C6D2252455B12D0086E205 /* UserInfo.swift in Sources */,
 				52CC60AC2453276000125139 /* HomeScreenVC.swift in Sources */,
+				5247C86F247AA57300E0622B /* ContactVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@ enum TabbarType: Int, CaseIterable {
     case search
     case notify
     case profile
+    case tips
     
     var icon: (normal: UIImage?, selected: UIImage?) {
         switch self {
@@ -23,6 +24,8 @@ enum TabbarType: Int, CaseIterable {
         case .search:
             return (UIImage(named: "plus"), UIImage(named: "plus"))
         case .profile:
+            return (UIImage(named: "ic_user_inactive"), UIImage(named: "ic_user_inactive"))
+        case .tips:
             return (UIImage(named: "ic_user_inactive"), UIImage(named: "ic_user_inactive"))
         }
     }
@@ -47,9 +50,11 @@ class HomeTabbar: UITabBarController {
         let search = AddCustom(nibName: "AddCustom", bundle: nil)
         let notify = FeedBacckVC(nibName: "FeedBacckVC", bundle: nil)
         //        let profile = ProfileVC(nibName: "ProfileVC", bundle: nil)
-        let profile = HomeScreenVC(nibName: "HomeScreenVC", bundle: nil)
+        let profile = ContactVC(nibName: "ContactVC", bundle: nil)
+        let tipsApple = TipsApple(nibName: "TipsApple", bundle: nil)
+        
         //        ProfileVC
-        viewControllers = [home, search, notify, profile]
+        viewControllers = [home, search, notify, profile, tipsApple]
         TabbarType.allCases.forEach { (type) in
             if let controller = viewControllers {
                 let item = controller[type.rawValue]

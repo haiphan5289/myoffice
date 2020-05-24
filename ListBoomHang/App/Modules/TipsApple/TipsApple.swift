@@ -1,29 +1,26 @@
 //
-//  FeedBacckVC.swift
+//  TipsApple.swift
 //  ListBoomHang
 //
-//  Created by MacbookPro on 5/18/20.
+//  Created by MacbookPro on 5/24/20.
 //  Copyright © 2020 MacbookPro. All rights reserved.
 //
 
 import UIKit
 import RxCocoa
 import RxSwift
-import Firebase
 
-class FeedBacckVC: UIViewController {
+class TipsApple: UIViewController {
 
     private let tableView: UITableView = UITableView(frame: .zero, style: .grouped)
-    private let disposebag = DisposeBag()
-    private var ref: DatabaseReference!
-    private var listFeedBack: [FeedbackDate] = []
+    var listTips: [TipsData] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        let xibCell = UINib(nibName: "FeedbBackCell", bundle:  nil)
-        tableView.register(xibCell, forCellReuseIdentifier: "FeedbBackCell")
+        let xibCell = UINib(nibName: "TipsAppleCell", bundle:  nil)
+        tableView.register(xibCell, forCellReuseIdentifier: "TipsAppleCell")
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         
@@ -33,20 +30,12 @@ class FeedBacckVC: UIViewController {
         }
         setupRX()
     }
-    
     private func setupRX() {
-        LoadingManager.instance.show()
-        self.ref.child("\(FirebaseTable.listFeedBack.table)").observe(.childAdded) { (data) in
-            if let user = self.convertDataSnapshotToCodable(data: data, type: FeedbackDate.self) {
-                self.listFeedBack.append(user)
-                self.tableView.reloadData()
-                LoadingManager.instance.dismiss()
-            }
-        }
+        
     }
 
 }
-extension FeedBacckVC: UITableViewDelegate, UITableViewDataSource {
+extension TipsApple: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
@@ -54,17 +43,18 @@ extension FeedBacckVC: UITableViewDelegate, UITableViewDataSource {
         return 0.1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 150
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbBackCell") as! FeedbBackCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TipsAppleCell") as! TipsAppleCell
+        cell.updateUI(model: self.listTips[indexPath.row])
         return cell
     }
     
     
 }
- 

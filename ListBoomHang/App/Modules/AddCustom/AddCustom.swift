@@ -97,8 +97,12 @@ class AddCustom: UIViewController {
             if !wSelf.isEnableButton {
                 wSelf.showAlert()
             }
-            let dataDic = ["status": strFB, "type": numberPhone, "price":userName, "imagePhone": self.imgBase64]
-            FirebaseDatabase.instance.ref.child("\(FirebaseTable.listPhone.table)").childByAutoId().setValue(dataDic)
+//            let userName: String?
+//               let rate: Int?
+//               let content: String?
+//               let imagePhone: String?
+            let dataDic: [String: Any] = ["content": strFB, "rate": 9, "userName":userName, "imagePhone": self.imgBase64]
+            FirebaseDatabase.instance.ref.child("\(FirebaseTable.listFeedBack.table)").childByAutoId().setValue(dataDic)
         }).disposed(by: disposebag)
         
         self.tapGesture.rx.event.bind(onNext: weakify { (user, wSelf) in
