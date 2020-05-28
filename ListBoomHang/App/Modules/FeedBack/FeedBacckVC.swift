@@ -19,6 +19,7 @@ class FeedBacckVC: UIViewController {
     private var listFeedBack: [FeedbackDate] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,11 +58,12 @@ extension FeedBacckVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.listFeedBack.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbBackCell") as! FeedbBackCell
+        cell.updateUI(model: self.listFeedBack[indexPath.row])
         return cell
     }
     

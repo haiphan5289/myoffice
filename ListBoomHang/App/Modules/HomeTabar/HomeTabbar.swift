@@ -10,7 +10,7 @@ import UIKit
 
 enum TabbarType: Int, CaseIterable {
     case home
-    case search
+//    case search
     case notify
     case profile
     case tips
@@ -21,8 +21,8 @@ enum TabbarType: Int, CaseIterable {
             return (UIImage(named: "ic_boom"), UIImage(named: "ic_boom"))
         case .notify:
             return (UIImage(named: "plus"), UIImage(named: "plus"))
-        case .search:
-            return (UIImage(named: "plus"), UIImage(named: "plus"))
+//        case .search:
+//            return (UIImage(named: "plus"), UIImage(named: "plus"))
         case .profile:
             return (UIImage(named: "ic_user_inactive"), UIImage(named: "ic_user_inactive"))
         case .tips:
@@ -47,14 +47,13 @@ class HomeTabbar: UITabBarController {
 //        let home = UIStoryboard.init(name: "HomeScreenVC", bundle: nil).instantiateViewController(withIdentifier: "HomeScreenVC") as! HomeScreenVC
         //        let home = HomeScreenVC()
         let home = HomeScreenVC(nibName: "HomeScreenVC", bundle: nil)
-        let search = AddCustom(nibName: "AddCustom", bundle: nil)
         let notify = FeedBacckVC(nibName: "FeedBacckVC", bundle: nil)
-        //        let profile = ProfileVC(nibName: "ProfileVC", bundle: nil)
-        let profile = ContactVC(nibName: "ContactVC", bundle: nil)
         let tipsApple = TipsApple(nibName: "TipsApple", bundle: nil)
+        let profile = ContactVC(nibName: "ContactVC", bundle: nil)
+
         
         //        ProfileVC
-        viewControllers = [home, search, notify, profile, tipsApple]
+        viewControllers = [home, notify, tipsApple, profile]
         TabbarType.allCases.forEach { (type) in
             if let controller = viewControllers {
                 let item = controller[type.rawValue]

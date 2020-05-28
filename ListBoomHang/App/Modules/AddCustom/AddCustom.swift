@@ -49,6 +49,11 @@ class AddCustom: UIViewController {
         ref = Database.database().reference()
         visualize()
         setupRX()
+        let dataDic: [String: Any] = ["userName": "Trần Dũ Hảo",
+                                      "rate": 5,
+                                      "content":"Cửa hàng uy tín, chất lượng máy tốt, thái độ phục vụ nhiệt tình.",
+                                      "avatar": "https://scontent-xsp1-1.xx.fbcdn.net/v/t1.0-1/p320x320/61344535_2611701222173725_6783614180734795776_n.jpg?_nc_cat=103&_nc_sid=dbb9e7&_nc_ohc=BQBPyQ49vM0AX_ypABo&_nc_ht=scontent-xsp1-1.xx&_nc_tp=6&oh=7938108a4df81bc1d4b4c1809582d495&oe=5EF546D1"]
+        FirebaseDatabase.instance.ref.child("\(FirebaseTable.listFeedBack.table)").childByAutoId().setValue(dataDic)
     }
     private func setupRX() {
         self.tvContent.rx.didBeginEditing.subscribe(onNext: { _ in
@@ -101,8 +106,8 @@ class AddCustom: UIViewController {
 //               let rate: Int?
 //               let content: String?
 //               let imagePhone: String?
-            let dataDic: [String: Any] = ["content": strFB, "rate": 9, "userName":userName, "imagePhone": self.imgBase64]
-            FirebaseDatabase.instance.ref.child("\(FirebaseTable.listFeedBack.table)").childByAutoId().setValue(dataDic)
+            let dataDic: [String: Any] = ["content": "strFB", "rate": 5, "userName":"userName", "imagePhone": self.imgBase64]
+            FirebaseDatabase.instance.ref.child("listPhone").childByAutoId().setValue(dataDic)
         }).disposed(by: disposebag)
         
         self.tapGesture.rx.event.bind(onNext: weakify { (user, wSelf) in

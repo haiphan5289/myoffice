@@ -20,6 +20,8 @@ class CellProduct: UICollectionViewCell {
         // Initialization code
         self.applyShadowAndRadius(sizeX: 0, sizeY: 3, shadowRadius: 6, shadowColor: CustomColor.black16two.color)
         vContent.radiusShadow(radius: 10)
+        imgPhone.clipsToBounds = true
+        imgPhone.layer.cornerRadius = 10
     }
     
     func updateUI(model: UserInfo) {

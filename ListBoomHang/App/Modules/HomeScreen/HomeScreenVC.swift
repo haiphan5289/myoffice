@@ -26,6 +26,11 @@ class HomeScreenVC: UIViewController, ActivityTrackingProgressProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+//        let dataDic: [String: Any] = ["type": "IPHONE 6",
+//                                      "status": "99%",
+//                                      "price":"1,700,000đ",
+//                                      "imagePhone": "https://scontent-xsp1-2.xx.fbcdn.net/v/t1.0-9/100575374_1629584400531850_5449900447324176384_n.jpg?_nc_cat=101&_nc_sid=110474&_nc_ohc=IPNKZMqeEkYAX-326PK&_nc_ht=scontent-xsp1-2.xx&oh=a361cc31a7b4e1f9ee611f57d6fbb6e4&oe=5EF51D13"]
+//        FirebaseDatabase.instance.ref.child("\(FirebaseTable.listPhone.table)").childByAutoId().setValue(dataDic)
         visualize()
         setupRX()
     }

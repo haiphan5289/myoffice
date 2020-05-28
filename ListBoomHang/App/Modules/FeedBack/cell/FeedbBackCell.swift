@@ -24,12 +24,20 @@ class FeedbBackCell: UITableViewCell {
         self.imgAvatar.clipToBoundAndRadius(radius: 35)
         self.imgAvatar.backgroundColor = .red
         self.lbDes.text = "backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor backgroundColor "
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func updateUI(model: FeedbackDate) {
+        vRating.rating = Double(model.rate ?? 0)
+        lbName.text = model.userName
+        imgAvatar.loadhinh(link: model.avatar ?? "")
+        lbDes.text = model.content
     }
     
 }

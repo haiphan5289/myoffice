@@ -123,8 +123,7 @@ extension UIImageView {
     func loadhinh(link: String){
         //add cache đã lưu vào image, để khỏi load lần nữa
         if let image_cache_data = image_Cache.object(forKey: link as AnyObject) {
-            self.image = image_cache_data as! UIImage
-            //return như vậy, để khởi chạy dòng cuối dưới
+            self.image = image_cache_data as? UIImage
             return
         }
         let activies: UIActivityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
@@ -134,21 +133,20 @@ extension UIImageView {
         self.addSubview(activies)
         let queue = DispatchQueue(label: "queue", qos: .default, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
         queue.async {
-//            let url = URL(string: link)
-//            let data = try? Data(contentsOf: url ?? URL(string: "")!)
-            let data = UIImage().decodeBase64(toImage: link)
+            let url = URL(string: link)
+            let data = try? Data(contentsOf: url ?? URL(string: "")!)
             DispatchQueue.main.async {
-//                if let image_dowload = data {
+                if let image_dowload = UIImage(data: data!){
                     activies.stopAnimating()
                     //tăng speed dowload
-                    image_Cache.setObject(data, forKey: link as AnyObject)
-                    self.image = data
-//                }
+                    image_Cache.setObject(image_dowload, forKey: link as AnyObject)
+                    self.image = image_dowload
+                }
             }
             
         }
         
     }
-
+    
 }
 
