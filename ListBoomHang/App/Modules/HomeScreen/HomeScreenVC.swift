@@ -26,11 +26,19 @@ class HomeScreenVC: UIViewController, ActivityTrackingProgressProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-//        let dataDic: [String: Any] = ["type": "IPHONE 6",
+//        let dataDic: [String: Any] = ["type": "IPHONE 8 128",
 //                                      "status": "99%",
-//                                      "price":"1,700,000đ",
-//                                      "imagePhone": "https://scontent-xsp1-2.xx.fbcdn.net/v/t1.0-9/100575374_1629584400531850_5449900447324176384_n.jpg?_nc_cat=101&_nc_sid=110474&_nc_ohc=IPNKZMqeEkYAX-326PK&_nc_ht=scontent-xsp1-2.xx&oh=a361cc31a7b4e1f9ee611f57d6fbb6e4&oe=5EF51D13"]
+//                                      "price":"7,800,000đ",
+//                                      "imagePhone": "https://scontent-xsp1-1.xx.fbcdn.net/v/t1.15752-9/101362394_3354650754554113_8347376094915067904_n.jpg?_nc_cat=105&_nc_sid=b96e70&_nc_ohc=PIULMwVeOgAAX-KdBWu&_nc_ht=scontent-xsp1-1.xx&oh=845401594b714272aa0e524eb9534e65&oe=5EF81857"]
+//        
 //        FirebaseDatabase.instance.ref.child("\(FirebaseTable.listPhone.table)").childByAutoId().setValue(dataDic)
+//        
+//        let dataDic1: [String: Any] = ["type": "IPHONE 8 Plus 64",
+//        "status": "99%",
+//        "price":"8,900,000đ",
+//        "imagePhone": "https://scontent-xsp1-1.xx.fbcdn.net/v/t1.15752-9/101190028_292625985100000_8454902181718392832_n.jpg?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=Xu0sH3XCOGoAX8UAJYR&_nc_ht=scontent-xsp1-1.xx&oh=ccf861c9fd36dc070089ac722cf2786f&oe=5EF60758"]
+//        FirebaseDatabase.instance.ref.child("\(FirebaseTable.listPhone.table)").childByAutoId().setValue(dataDic1)
+
         visualize()
         setupRX()
     }
@@ -77,6 +85,7 @@ class HomeScreenVC: UIViewController, ActivityTrackingProgressProtocol {
         collectionView.register(CellProduct.nib, forCellWithReuseIdentifier: CellProduct.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
         
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in

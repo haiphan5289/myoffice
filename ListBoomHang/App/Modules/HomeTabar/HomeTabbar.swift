@@ -20,13 +20,13 @@ enum TabbarType: Int, CaseIterable {
         case .home:
             return (UIImage(named: "ic_boom"), UIImage(named: "ic_boom"))
         case .notify:
-            return (UIImage(named: "plus"), UIImage(named: "plus"))
+            return (UIImage(named: "feedback"), UIImage(named: "feedback"))
 //        case .search:
 //            return (UIImage(named: "plus"), UIImage(named: "plus"))
         case .profile:
-            return (UIImage(named: "ic_user_inactive"), UIImage(named: "ic_user_inactive"))
+            return (UIImage(named: "tips"), UIImage(named: "tips"))
         case .tips:
-            return (UIImage(named: "ic_user_inactive"), UIImage(named: "ic_user_inactive"))
+            return (UIImage(named: "contact"), UIImage(named: "contact"))
         }
     }
     

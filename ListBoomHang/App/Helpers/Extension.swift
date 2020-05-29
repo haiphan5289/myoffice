@@ -126,22 +126,30 @@ extension UIImageView {
             self.image = image_cache_data as? UIImage
             return
         }
+        
+        guard let url = URL(string: link) else {
+            return
+        }
         let activies: UIActivityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         activies.frame = CGRect(x: self.frame.width / 2, y: self.frame.height / 2, width: 0, height: 0)
         activies.color = .blue
         activies.startAnimating()
         self.addSubview(activies)
+        
         let queue = DispatchQueue(label: "queue", qos: .default, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
         queue.async {
-            let url = URL(string: link)
-            let data = try? Data(contentsOf: url ?? URL(string: "")!)
-            DispatchQueue.main.async {
-                if let image_dowload = UIImage(data: data!){
-                    activies.stopAnimating()
-                    //tăng speed dowload
-                    image_Cache.setObject(image_dowload, forKey: link as AnyObject)
-                    self.image = image_dowload
+            do {
+                let data = try Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    if let image_dowload = UIImage(data: data){
+                        activies.stopAnimating()
+                        //tăng speed dowload
+                        image_Cache.setObject(image_dowload, forKey: link as AnyObject)
+                        self.image = image_dowload
+                    }
                 }
+            } catch let err {
+                print(err.localizedDescription)
             }
             
         }
