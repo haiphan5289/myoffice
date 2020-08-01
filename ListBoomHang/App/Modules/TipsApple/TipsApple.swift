@@ -9,14 +9,21 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Firebase
 
 class TipsApple: UIViewController {
 
     private let tableView: UITableView = UITableView(frame: .zero, style: .grouped)
     var listTips: [TipsData] = []
+    private var ref: DatabaseReference = Database.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        visualize()
+        setupRX()
+    }
+}
+extension TipsApple {
+    private func visualize() {
         tableView.delegate = self
         tableView.dataSource = self
         let xibCell = UINib(nibName: "TipsAppleCell", bundle:  nil)
@@ -28,12 +35,18 @@ class TipsApple: UIViewController {
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        setupRX()
     }
     private func setupRX() {
-        
+        LoadingManager.instance.show()
+        self.ref.child("\(FirebaseTable.tips.table)").observe(.childAdded) { [weak self] (data) in
+            guard let wSelf = self else { return }
+            if let user = wSelf.convertDataSnapshotToCodable(data: data, type: TipsData.self) {
+                wSelf.listTips.append(user)
+                wSelf.tableView.reloadData()
+                LoadingManager.instance.dismiss()
+            }
+        }
     }
-
 }
 extension TipsApple: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -47,7 +60,7 @@ extension TipsApple: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.listTips.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
