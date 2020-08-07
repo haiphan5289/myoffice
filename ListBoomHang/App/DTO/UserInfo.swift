@@ -13,9 +13,11 @@ struct UserInfo: Codable {
     let type: String?
     let price: String?
     let imagePhone: String?
+    let color: String?
+    let description: String?
     
     enum CodingKeys: String, CodingKey {
-        case status ,type, price, imagePhone
+        case status ,type, price, imagePhone, color, description
     }
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -23,5 +25,7 @@ struct UserInfo: Codable {
         type = try values.decodeIfPresent(String.self, forKey: .type)
         price = try values.decodeIfPresent(String.self, forKey: .price)
         imagePhone = try values.decodeIfPresent(String.self, forKey: .imagePhone)
+        color = try values.decodeIfPresent(String.self, forKey: .color)
+        description = try values.decodeIfPresent(String.self, forKey: .description)
     }
 }

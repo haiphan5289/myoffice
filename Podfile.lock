@@ -38,6 +38,9 @@ PODS:
   - Firebase/Database (4.0.4):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
+  - Firebase/Messaging (4.0.4):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.0)
   - Firebase/Storage (4.0.4):
     - Firebase/Core
     - FirebaseStorage (= 2.0.0)
@@ -56,6 +59,12 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - FirebaseStorage (2.0.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
@@ -92,6 +101,8 @@ PODS:
   - GoogleToolboxForMac/DebugUtils (2.2.2):
     - GoogleToolboxForMac/Defines (= 2.2.2)
   - GoogleToolboxForMac/Defines (2.2.2)
+  - GoogleToolboxForMac/Logger (2.2.2):
+    - GoogleToolboxForMac/Defines (= 2.2.2)
   - "GoogleToolboxForMac/NSData+zlib (2.2.2)":
     - GoogleToolboxForMac/Defines (= 2.2.2)
   - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.2)":
@@ -110,6 +121,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - Protobuf (3.12.0)
   - RxCocoa (5.1.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -131,6 +143,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core (~> 4.0.3)
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/Storage
   - FSCalendar
   - Google/SignIn
@@ -158,6 +171,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseStorage
     - FSCalendar
     - Google
@@ -173,6 +187,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Kingfisher
     - nanopb
+    - Protobuf
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -195,6 +210,7 @@ SPEC CHECKSUMS:
   FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   Google: d536877ec602555b755cc28ce6fed104825c693c
@@ -210,6 +226,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
@@ -217,6 +234,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 6b3fcbc2986da7bf3d78977adc5360f090583941
+PODFILE CHECKSUM: 4cd2f64d4efd154646997e9e7d3f78a84673868d
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

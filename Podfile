@@ -28,5 +28,10 @@ pod 'Firebase'
 pod 'Firebase/Storage'
 pod 'Firebase/Database'
 pod 'SVProgressHUD'
+# Add the Firebase pod for Google Analytics
+pod 'Firebase/Analytics'
+
+# Add the pod for Firebase Cloud Messaging
+pod 'Firebase/Messaging'
 
 end

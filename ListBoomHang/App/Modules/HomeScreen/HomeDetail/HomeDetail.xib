@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeDetail" customModule="ListBoomHang" customModuleProvider="target">
+            <connections>
+                <outlet property="imgIPhone" destination="1x1-cE-enk" id="oJG-j3-0Dz"/>
+                <outlet property="lbColor" destination="IwB-kf-ja3" id="wi1-di-w6d"/>
+                <outlet property="lbPrice" destination="e3M-Mj-omu" id="NfS-ce-4eu"/>
+                <outlet property="lbStatus" destination="hcL-Ng-71j" id="KY0-rJ-027"/>
+                <outlet property="lbTitle" destination="Pak-CR-dXQ" id="z8S-uH-a10"/>
+                <outlet property="lnDescription" destination="uY5-1b-kAT" id="7yb-8K-QES"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1x1-cE-enk">
+                    <rect key="frame" x="16" y="16" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="WfS-Cd-14L"/>
+                        <constraint firstAttribute="width" constant="120" id="l3n-hF-5nU"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pak-CR-dXQ">
+                    <rect key="frame" x="152" y="16" width="246" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcL-Ng-71j">
+                    <rect key="frame" x="152" y="50.666666666666664" width="246" height="20.999999999999993"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3M-Mj-omu">
+                    <rect key="frame" x="152" y="115" width="246" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.70196078431372544" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwB-kf-ja3">
+                    <rect key="frame" x="152" y="80.666666666666671" width="246" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uY5-1b-kAT">
+                    <rect key="frame" x="16" y="152" width="382" height="568"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="1x1-cE-enk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="1y8-hm-3HO"/>
+                <constraint firstItem="Pak-CR-dXQ" firstAttribute="leading" secondItem="hcL-Ng-71j" secondAttribute="leading" id="2x6-0W-91I"/>
+                <constraint firstItem="uY5-1b-kAT" firstAttribute="top" secondItem="1x1-cE-enk" secondAttribute="bottom" constant="16" id="3Qi-4s-GpP"/>
+                <constraint firstItem="Pak-CR-dXQ" firstAttribute="top" secondItem="1x1-cE-enk" secondAttribute="top" id="5fi-UD-emt"/>
+                <constraint firstItem="IwB-kf-ja3" firstAttribute="centerY" secondItem="1x1-cE-enk" secondAttribute="centerY" constant="15" id="CRU-I4-sBP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uY5-1b-kAT" secondAttribute="trailing" constant="16" id="Crw-b3-Itl"/>
+                <constraint firstItem="uY5-1b-kAT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="H5X-eV-hXh"/>
+                <constraint firstItem="hcL-Ng-71j" firstAttribute="centerY" secondItem="1x1-cE-enk" secondAttribute="centerY" constant="-15" id="NKO-CQ-dCe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Pak-CR-dXQ" secondAttribute="trailing" constant="16" id="QMn-WR-qcc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e3M-Mj-omu" secondAttribute="trailing" constant="16" id="Wbv-md-Mgr"/>
+                <constraint firstItem="hcL-Ng-71j" firstAttribute="leading" secondItem="IwB-kf-ja3" secondAttribute="leading" id="b4v-H2-OUi"/>
+                <constraint firstItem="1x1-cE-enk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="cgc-BC-etg"/>
+                <constraint firstItem="e3M-Mj-omu" firstAttribute="bottom" secondItem="1x1-cE-enk" secondAttribute="bottom" id="hdV-oY-hsb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IwB-kf-ja3" secondAttribute="trailing" constant="16" id="mm7-5F-8up"/>
+                <constraint firstItem="Pak-CR-dXQ" firstAttribute="leading" secondItem="1x1-cE-enk" secondAttribute="trailing" constant="16" id="pD3-kt-fpx"/>
+                <constraint firstItem="e3M-Mj-omu" firstAttribute="leading" secondItem="hcL-Ng-71j" secondAttribute="leading" id="tck-fa-kJS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hcL-Ng-71j" secondAttribute="trailing" constant="16" id="xud-Sv-iw3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uY5-1b-kAT" secondAttribute="bottom" constant="16" id="zuh-iU-rjL"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="132" y="94"/>
+        </view>
+    </objects>
+</document>
