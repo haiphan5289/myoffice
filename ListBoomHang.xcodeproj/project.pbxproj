@@ -10,6 +10,7 @@
 		1B6BAE1B24DE61B3001D0F9A /* TipsAppleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6BAE1A24DE61B3001D0F9A /* TipsAppleDetail.swift */; };
 		1B78862724D6F3BC008389C8 /* HomeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78862524D6F3BC008389C8 /* HomeDetail.swift */; };
 		1B78862824D6F3BC008389C8 /* HomeDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B78862624D6F3BC008389C8 /* HomeDetail.xib */; };
+		1B834EF024E0275900735329 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B834EEF24E0275900735329 /* CustomLayout.swift */; };
 		521ADFA82465A7DD00BD1B3C /* CellProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ADFA62465A7DD00BD1B3C /* CellProduct.swift */; };
 		521ADFA92465A7DD00BD1B3C /* CellProduct.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521ADFA72465A7DD00BD1B3C /* CellProduct.xib */; };
 		5247C86F247AA57300E0622B /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C86D247AA57300E0622B /* ContactVC.swift */; };
@@ -51,6 +52,7 @@
 		1B6BAE1A24DE61B3001D0F9A /* TipsAppleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsAppleDetail.swift; sourceTree = "<group>"; };
 		1B78862524D6F3BC008389C8 /* HomeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetail.swift; sourceTree = "<group>"; };
 		1B78862624D6F3BC008389C8 /* HomeDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetail.xib; sourceTree = "<group>"; };
+		1B834EEF24E0275900735329 /* CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		38E72F7D0101F033D9273C45 /* Pods-ListBoomHang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListBoomHang.debug.xcconfig"; path = "Target Support Files/Pods-ListBoomHang/Pods-ListBoomHang.debug.xcconfig"; sourceTree = "<group>"; };
 		521ADFA62465A7DD00BD1B3C /* CellProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProduct.swift; sourceTree = "<group>"; };
 		521ADFA72465A7DD00BD1B3C /* CellProduct.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellProduct.xib; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 				1B78862624D6F3BC008389C8 /* HomeDetail.xib */,
 			);
 			path = HomeDetail;
+			sourceTree = "<group>";
+		};
+		1B834EEE24E0274600735329 /* CustomLayout */ = {
+			isa = PBXGroup;
+			children = (
+				1B834EEF24E0275900735329 /* CustomLayout.swift */,
+			);
+			path = CustomLayout;
 			sourceTree = "<group>";
 		};
 		35B58D4F33D89AA40C17A7EF /* Pods */ = {
@@ -263,6 +273,7 @@
 		52CC60A92453274500125139 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				1B834EEE24E0274600735329 /* CustomLayout */,
 				1B78862424D6F3A5008389C8 /* HomeDetail */,
 				52CC60AE2453293F00125139 /* cell */,
 				52CC60AA2453276000125139 /* HomeScreenVC.swift */,
@@ -485,6 +496,7 @@
 				5265A30B24533DC500DCD25C /* FirebaseDatabase.swift in Sources */,
 				524D428C2453207800F63E51 /* ListBoomHang.xcdatamodeld in Sources */,
 				52F427782472DB3B00F9BB1C /* FeedBacckVC.swift in Sources */,
+				1B834EF024E0275900735329 /* CustomLayout.swift in Sources */,
 				5247C879247AAA7400E0622B /* TipsAppleCell.swift in Sources */,
 				52CC60B524532CE800125139 /* Color.swift in Sources */,
 				5247C874247AA8B400E0622B /* TipsApple.swift in Sources */,

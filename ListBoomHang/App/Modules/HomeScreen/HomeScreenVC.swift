@@ -38,11 +38,15 @@ extension HomeScreenVC {
         tagCellLayout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: tagCellLayout)
-        
+        collectionView.collectionViewLayout = CustomLayout()
         collectionView.register(CellProduct.nib, forCellWithReuseIdentifier: CellProduct.identifier)
+        if let layout = collectionView.collectionViewLayout as? CustomLayout{
+            layout.layoutDelegate = self
+        }
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
+        
         
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
@@ -79,7 +83,7 @@ extension HomeScreenVC {
         }.disposed(by: disposebag)
     }
     private func uploadData() {
-        let url = URL(string: "https://scontent-xsp1-2.xx.fbcdn.net/v/t1.15752-9/116899666_3074580902661954_2695654160561301153_n.jpg?_nc_cat=102&_nc_sid=b96e70&_nc_ohc=swZ_CpCSd1kAX9ljP6u&_nc_ht=scontent-xsp1-2.xx&oh=7ba50d4a59a435893cda147d669bc887&oe=5F4CD530")
+        let url = URL(string: "https://facebook.com/messaging/lightspeed/media_fallback/?entity_id=1137422649992681&entity_type=3&width=2048&height=2048&access_token=EAAGaiDLOH2MBAMeZAnppZCgaXI1hjtsdvYbbsDROSOLCBKIsGzWr9fR8FxIzZCkK3wGYcusPi6rpwe1kDBcjY7dmuKXS7o8EZAPpnhZBENZC0sTdZAXaR0uwtZCLC9OSmLUTEYjSDsmyIBwwpRI9VdXZAIb1Vfo9WuZANM8mCBPEvaUpavSgAxFbO6")
         guard let url1 = url else {
             return
         }
@@ -87,7 +91,7 @@ extension HomeScreenVC {
             let data = try Data(contentsOf: url1)
             // Create a reference to the file you want to upload
             let storageRef = Storage.storage().reference()
-            let riversRef = storageRef.child("images/iphone6Plus.jpg")
+            let riversRef = storageRef.child("images/iphone6s16.jpg")
 
             // Upload the file to the path "images/rivers.jpg"
             let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
@@ -103,56 +107,35 @@ extension HomeScreenVC {
                   // Uh-oh, an error occurred!
                   return
                 }
-                let dataDic: [String: Any] = ["type": "IPHONE 6 Plus 16",
+                let dataDic: [String: Any] = ["type": "IPHONE 6S 16",
                                               "status": "99%",
-                                              "price":"4,111,111 đ",
+                                              "price":"3,111,111 đ",
                                               "imagePhone": downloadURL.absoluteString,
-                                              "color": "Trắng - Đen",
+                                              "color": "Trắng - Đen - Vàng",
                                               "description": """
-                    1. Đôi nét về iPhone 6 Plus
-                    Vào ngày 09/09/2014, bên cạnh chiếc điện thoại iPhone 6 thì Apple cũng đồng thời giới thiệu cả chiếc iPhone 6 Plus. iPhone 6 Plus là sự kế thừa của chiếc điện thoại iPhone 5S, đánh dấu sự gia tăng kích thước vật lý màn hình và sự nâng cấp cả về hiệu năng, cấu hình, camera,...
-                    Chỉ trong ngày đầu tiên, iPhone 6 Plus và iPhone 6 đã bán ra 4 triệu bản và hơn 6 triệu bản trong 2 ngày tiếp theo.
+                    Lúc 0 giờ đêm nay (ngày 9/9), Apple đã chính thức giới thiệu bộ đôi iPhone 6s và iPhone 6s Plus thế hệ mới nhất.
 
-                    2. Điểm nổi bật của dòng điện thoại iPhone 6 Plus
-                    2.1. Thiết kế
-                    Về ngoại hình, chiếc iPhone 6 Plus có thiết kế khá tương tự với iPhone 6. Đó vẫn là thiết kế bo tròn các góc, được làm từ hợp kim nhôm cao cấp nguyên khối - một chất liệu thường được dùng trong ngành công nghiệp hàng không. Bởi thế, khi cầm trên tay các bạn sẽ cảm thấy máy rất chắc chắn, mạnh mẽ và cứng cáp.
+                    Đúng như dự đoán, chiếc iPhone 6s có thiết kế giữ nguyên từ phiên bản trước và được nâng cấp một số tính năng mới. Đáng chú ý nhất là màn hình cảm ứng nhận biết lực ấn được Apple gọi là 3D Touch (chạm 3 chiều). 3D Touch cho phép bạn ấn lên màn hình iPhone 6s để mở các menu mới, kích hoạt các đường dẫn (shortcut) và tương tác với thiết bị theo những cách thức mới.
 
-                    giá iphone 6 plus 16gb
 
-                    iPhone 6 Plus có thêm màu vàng hồng
 
-                    Một thông tin iPhone 6 Plus khiến khá nhiều người vui mừng đó là trong phiên bản này, Apple đã tung ra nhiều màu sắc đa dạng hơn. Ngoài 3 màu bạc, xám và vàng đã có từ trước thì giờ đây máy còn có thêm cả màu vàng hồng. Đây cũng là màu máy được yêu thích nhất trong các màu của iPhone 6 Plus. Với 4 màu sắc này người dùng cũng có thêm nhiều sự lựa chọn cho mình.
+                    iPhone 6s vẫn duy trì thiết kế tương tự với màn hình 4.7 inch và được bổ sung màu mới là vàng hồng. Màu vàng hồng trông rất hồng, nhất là khi nhìn ở nơi nhiều ánh sáng. Điện thoại này cũng được áp dụng nhiều vật liệu mới gồm khung máy bằng loại hợp kim do Apple tự chế tác và màn hình được phủ lớp kính mới được gọi Ion-X đã được dùng trước đó trên Apple Watch Sport.
 
-                    2.2. Cấu hình
-                    Theo thông tin chi tiết iPhone 6 Plus được công bố thì iPhone 6 Plus sẽ sử dụng con chip A8 64 bit 2 nhân Cyclone. So với các chip A7 và A6 trước đây thì chip A8 mạnh mẽ hơn hẳn, dễ nhận thấy nhất đó chính là xung nhịp được tăng lên 100 MHz.
 
-                    Sau khi test thực tế cũng đã cho thấy iPhone 6 Plus thực sự hoạt động rất nhanh và hiệu quả, ngay cả khi thử tải các ứng dụng thực tế.
 
-                    giá iphone 6 plus chính hãng
+                    3D Touch mang lại hai cách tương tác mới với iPhone 6s được Apple gọi là "peek" và "pop". "Peek" cho phép bạn nhấn vào các biểu tượng ứng dụng và những nút khác để mở ra các đường dẫn (shortcut) trực tiếp vào những tính năng nào đó. Chẳng hạn nhấn vào ứng dụng Camera sẽ đưa đến lựa chọn mở trực tiếp vào tính năng chụp ảnh tự sướng. Nhấn vào ứng dụng Facebook sẽ đưa đến lựa chọn cập nhật trạng thái, chụp ảnh, check in hay tìm kiếm. "Pop" cho phép bạn xem ảnh và video mà không cần mở chúng lên màn hình.
 
-                    Điện thoại iPhone 6 Plus sử dụng chip A8
 
-                    Một điểm nữa cần lưu ý đó là ở phiên bản iPhone 6 Plus này Apple đã nâng cấp màn hình rộng rãi hơn. Theo chi tiết iPhone 6 Plus mà chúng tôi nhận được thì kích thước màn hình của chiếc điện thoại này là 5.5 inch. Thêm vào đó, Apple còn trang bị thêm công nghệ cảm ứng lực thông minh 3D Touch. Các bạn chỉ cần chạm vào màn hình, tùy theo lực nhấn mà máy sẽ đưa ra các phản hồi lệnh khác nhau.
 
-                    2.3. Camera
-                    Một trong các yếu tố cũng có ảnh hưởng tới giá iPhone 6 Plus chính hãng, đó là camera. iPhone 6 Plus sở hữu cụm camera iSight với camera chính được nâng cấp lên 12MP giúp máy có thể bắt nét xa và thu ảnh sắc nét hơn. Ngoài ra, tính năng quay video 4K cũng khá ấn tượng.
+                    iPhone 6s được trang bị bộ vi xử lý 64-bit Apple A9 mới được tích hợp kèm cả vi xử lý chuyển động M9. Như thường lệ, Apple không công bố chi tiết về vi xử lý nhưng cho biết nó sẽ nhanh hơn 70% với tác vụ CPU và 90% với tác vụ GPU so với Apple A8 trên iPhone 6.
 
-                    Camera trước của iPhone 6 Plus có độ phân giải là 5MP. Nhờ được trang bị công nghệ xử lý ảnh hiện đại nên các bức ảnh chụp bằng camera trước cũng sinh động và sắc nét không kém.
 
-                    2.4. Thời lượng pin
-                    Mặc dù ở phiên bản iPhone 6 Plus dung lượng pin không lớn, chỉ 1.715 mAh. Tuy nhiên, bù lại thì chiếc máy này lại có chế độ tiết kiệm pin tốt nên thời lượng sử dụng máy vẫn đảm bảo khiến người dùng hài lòng.
 
-                    giá iphone 6 plus 16g
+                    Apple cũng đưa vào iPhone 6s camera sau 12MP. Đây là lần đầu tiên Apple tăng độ phân giải của camera sau kể từ chiếc iPhone 4s ra mắt vào năm 2011. Apple cho biết camera 12MP này sẽ được cải thiện khả năng lấy nét tự động, có khả năng quay video 4K và một điều không thay đổi là cụm camera vẫn lồi ở phía sau.
 
-                    Dung lượng pin không lớn nhưng lại rất tiết kiệm pin
 
-                    3. Giá của iPhone 6 Plus như thế nào?
-                    Thông tin iPhone 6 Plus tiếp theo mà chúng tôi muốn chia sẻ đó là về giá thành. Mức giá iPhone 6 Plus tại Việt Nam bản 16GB có giá chưa tới 5 triệu đồng.
 
-                    4. Mua iPhone 6 Plus ở đâu an toàn, uy tín nhất
-                    Nếu các bạn đã có quyết định mua iPhone 6 Plus thì có thể tìm tới  Chúng tôi - địa chỉ chuyên cung cấp điện thoại iPhone chính hãng. Khi mua hàng tại đây các bạn hoàn toàn không cần lo lắng về chất lượng sản phẩm. Bên cạnh đó, giá bán iPhone 6 Plus tại đây cũng rất cạnh tranh.
-
-                    Trên đây là một số thông tin iPhone 6 Plus mà chúng tôi muốn chia sẻ tới các bạn. Hy vọng những thông tin này sẽ hữu ích, giúp bạn hiểu rõ hơn về chiếc iPhone 6 Plus.
+                    Camera trước cũng thay đổi, tăng lên 5MP và dù không có đèn flash nhưng khi chụp thiếu sáng thì màn hình sáng lên gấp 3 lần để trợ sáng cho ảnh chụp. Độ sáng màn hình để trợ sáng cũng có thể tuỳ chỉnh màu để phù hợp với ánh sáng môi trường của bức ảnh chụp.
 """
                 ]
                 FirebaseDatabase.instance.ref.child("\(FirebaseTable.listPhone.table)").childByAutoId().setValue(dataDic)
@@ -183,16 +166,9 @@ extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
-            return CGSize(width: 300, height: 100)
-        }
-        
-        if indexPath.row == 1 {
-            return CGSize(width: 50, height: 200)
-        }
-        return CGSize(width: (self.view.bounds.width - 48) / 2 , height: 150)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: (self.view.bounds.width - 48) / 2 , height: 150)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = HomeDetail(nibName: "HomeDetail", bundle: nil)
@@ -200,4 +176,11 @@ extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+extension HomeScreenVC: CustomLayoutDelegate {
+  func heightFor(index: Int) -> CGFloat {
+
+      //Implement your own logic to return the height for specific cell
+      return CGFloat(max(1, index) * 50)
+  }
 }
