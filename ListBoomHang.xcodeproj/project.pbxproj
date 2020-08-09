@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B6BAE1B24DE61B3001D0F9A /* TipsAppleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6BAE1A24DE61B3001D0F9A /* TipsAppleDetail.swift */; };
 		1B78862724D6F3BC008389C8 /* HomeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78862524D6F3BC008389C8 /* HomeDetail.swift */; };
 		1B78862824D6F3BC008389C8 /* HomeDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B78862624D6F3BC008389C8 /* HomeDetail.xib */; };
 		521ADFA82465A7DD00BD1B3C /* CellProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ADFA62465A7DD00BD1B3C /* CellProduct.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B6BAE1A24DE61B3001D0F9A /* TipsAppleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsAppleDetail.swift; sourceTree = "<group>"; };
 		1B78862524D6F3BC008389C8 /* HomeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetail.swift; sourceTree = "<group>"; };
 		1B78862624D6F3BC008389C8 /* HomeDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetail.xib; sourceTree = "<group>"; };
 		38E72F7D0101F033D9273C45 /* Pods-ListBoomHang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListBoomHang.debug.xcconfig"; path = "Target Support Files/Pods-ListBoomHang/Pods-ListBoomHang.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B6BAE1924DE6184001D0F9A /* TipsAppleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1B6BAE1A24DE61B3001D0F9A /* TipsAppleDetail.swift */,
+			);
+			path = TipsAppleDetail;
+			sourceTree = "<group>";
+		};
 		1B78862424D6F3A5008389C8 /* HomeDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 		5247C871247AA89900E0622B /* TipsApple */ = {
 			isa = PBXGroup;
 			children = (
+				1B6BAE1924DE6184001D0F9A /* TipsAppleDetail */,
 				5247C87B247AACF400E0622B /* Model */,
 				5247C876247AAA5B00E0622B /* cell */,
 				5247C872247AA8B400E0622B /* TipsApple.swift */,
@@ -479,6 +490,7 @@
 				5247C874247AA8B400E0622B /* TipsApple.swift in Sources */,
 				52F4277D2472DB7500F9BB1C /* FeedbBackCell.swift in Sources */,
 				52CC60B12453295300125139 /* HomeScreenCell.swift in Sources */,
+				1B6BAE1B24DE61B3001D0F9A /* TipsAppleDetail.swift in Sources */,
 				5247C880247AAF2F00E0622B /* FeedbackDTO.swift in Sources */,
 				52C6D2252455B12D0086E205 /* UserInfo.swift in Sources */,
 				52CC60AC2453276000125139 /* HomeScreenVC.swift in Sources */,

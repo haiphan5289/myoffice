@@ -68,6 +68,11 @@ extension TipsApple: UITableViewDelegate, UITableViewDataSource {
         cell.updateUI(model: self.listTips[indexPath.row])
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detail = self.listTips[indexPath.row]
+        let vc = TipsAppleDetail.init(item: detail)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
 }

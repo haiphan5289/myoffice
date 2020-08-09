@@ -29,6 +29,18 @@ enum TabbarType: Int, CaseIterable {
             return (UIImage(named: "contact"), UIImage(named: "contact"))
         }
     }
+    var text: String {
+        switch self {
+        case .home:
+            return "Sản phẩm"
+        case .notify:
+            return "Phản hồi"
+        case .profile:
+            return "Mẹo Apple"
+        case .tips:
+            return "Liên hệ"
+        }
+    }
     
 }
 
@@ -57,9 +69,10 @@ class HomeTabbar: UITabBarController {
         TabbarType.allCases.forEach { (type) in
             if let controller = viewControllers {
                 let item = controller[type.rawValue]
-                item.tabBarItem.image = type.icon.normal
-                item.tabBarItem.selectedImage = type.icon.selected
-                item.tabBarItem.imageInsets = UIEdgeInsets(top: 32, left: 0, bottom: 32, right: 0)
+//                item.tabBarItem.image = type.icon.normal
+//                item.tabBarItem.selectedImage = type.icon.selected
+//                item.tabBarItem.imageInsets = UIEdgeInsets(top: 32, left: 0, bottom: 32, right: 0)
+                item.tabBarItem.title = type.text
             }
         }
         

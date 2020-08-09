@@ -184,6 +184,13 @@ extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0 {
+            return CGSize(width: 300, height: 100)
+        }
+        
+        if indexPath.row == 1 {
+            return CGSize(width: 50, height: 200)
+        }
         return CGSize(width: (self.view.bounds.width - 48) / 2 , height: 150)
     }
     
