@@ -21,7 +21,9 @@ class HomeScreenVC: UIViewController, ActivityTrackingProgressProtocol {
     private var dataSource: [UserInfo] = []
     private var filterdata: [UserInfo] = []
     private let disposebag = DisposeBag()
+    private var isSearching: Bool = false
     private var ref: DatabaseReference = Database.database().reference()
+    private var tap: UITapGestureRecognizer = UITapGestureRecognizer()
     override func viewDidLoad() {
         super.viewDidLoad()
 //        uploadData()
@@ -38,11 +40,11 @@ extension HomeScreenVC {
         tagCellLayout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: tagCellLayout)
-        collectionView.collectionViewLayout = CustomLayout()
+//        collectionView.collectionViewLayout = CustomLayout()
         collectionView.register(CellProduct.nib, forCellWithReuseIdentifier: CellProduct.identifier)
-        if let layout = collectionView.collectionViewLayout as? CustomLayout{
-            layout.layoutDelegate = self
-        }
+//        if let layout = collectionView.collectionViewLayout as? CustomLayout{
+//            layout.layoutDelegate = self
+//        }
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
@@ -54,6 +56,8 @@ extension HomeScreenVC {
             make.top.equalTo(self.searchBar.snp.bottom)
         }
         self.collectionView.backgroundColor = .white
+        
+        self.view.addGestureRecognizer(tap)
     }
     private func setupRX() {
         LoadingManager.instance.show()
@@ -66,7 +70,12 @@ extension HomeScreenVC {
         }
         
         self.searchBar.rx.text.bind { (value) in
-            guard let text = value else { return }
+            guard let text = value, text.count > 0 else {
+                self.isSearching = false
+                self.collectionView.reloadData()
+                return
+            }
+            self.isSearching = true
             self.filterdata =  self.dataSource.filter { ($0.type?.contains(text) ?? true) }
             self.collectionView.reloadData()
         }.disposed(by: disposebag)
@@ -81,9 +90,13 @@ extension HomeScreenVC {
         NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification).bind { _ in
             Auth.auth().signIn(withEmail: "userkhach@gmail.com", password: "123456", completion: nil)
         }.disposed(by: disposebag)
+        
+        self.tap.rx.event.bind { _ in
+            self.view.endEditing(true)
+        }.disposed(by: disposebag)
     }
     private func uploadData() {
-        let url = URL(string: "https://facebook.com/messaging/lightspeed/media_fallback/?entity_id=1137422649992681&entity_type=3&width=2048&height=2048&access_token=EAAGaiDLOH2MBAMeZAnppZCgaXI1hjtsdvYbbsDROSOLCBKIsGzWr9fR8FxIzZCkK3wGYcusPi6rpwe1kDBcjY7dmuKXS7o8EZAPpnhZBENZC0sTdZAXaR0uwtZCLC9OSmLUTEYjSDsmyIBwwpRI9VdXZAIb1Vfo9WuZANM8mCBPEvaUpavSgAxFbO6")
+        let url = URL(string: "https://facebook.com/messaging/lightspeed/media_fallback/?entity_id=330298721431268&entity_type=3&width=2048&height=2048&access_token=EAAGaiDLOH2MBAMeZAnppZCgaXI1hjtsdvYbbsDROSOLCBKIsGzWr9fR8FxIzZCkK3wGYcusPi6rpwe1kDBcjY7dmuKXS7o8EZAPpnhZBENZC0sTdZAXaR0uwtZCLC9OSmLUTEYjSDsmyIBwwpRI9VdXZAIb1Vfo9WuZANM8mCBPEvaUpavSgAxFbO6")
         guard let url1 = url else {
             return
         }
@@ -91,7 +104,7 @@ extension HomeScreenVC {
             let data = try Data(contentsOf: url1)
             // Create a reference to the file you want to upload
             let storageRef = Storage.storage().reference()
-            let riversRef = storageRef.child("images/iphone6s16.jpg")
+            let riversRef = storageRef.child("images/iphone7Plus32.jpg")
 
             // Upload the file to the path "images/rivers.jpg"
             let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
@@ -107,35 +120,103 @@ extension HomeScreenVC {
                   // Uh-oh, an error occurred!
                   return
                 }
-                let dataDic: [String: Any] = ["type": "IPHONE 6S 16",
+                let dataDic: [String: Any] = ["type": "IPHONE 7 Plus 32",
                                               "status": "99%",
-                                              "price":"3,111,111 đ",
+                                              "price":"6,2222,222 đ",
                                               "imagePhone": downloadURL.absoluteString,
-                                              "color": "Trắng - Đen - Vàng",
+                                              "color": "Trắng - Đen - Vàng - Đỏ",
                                               "description": """
-                    Lúc 0 giờ đêm nay (ngày 9/9), Apple đã chính thức giới thiệu bộ đôi iPhone 6s và iPhone 6s Plus thế hệ mới nhất.
+                   Đánh giá chi tiết iPhone 7 Plus 32GB
 
-                    Đúng như dự đoán, chiếc iPhone 6s có thiết kế giữ nguyên từ phiên bản trước và được nâng cấp một số tính năng mới. Đáng chú ý nhất là màn hình cảm ứng nhận biết lực ấn được Apple gọi là 3D Touch (chạm 3 chiều). 3D Touch cho phép bạn ấn lên màn hình iPhone 6s để mở các menu mới, kích hoạt các đường dẫn (shortcut) và tương tác với thiết bị theo những cách thức mới.
+                   iPhone 7 Plus dường như là sản phẩm được Apple chăm chút để vượt xa iPhone 7, trở thành sản phẩm rất đáng để nâng cấp so với iPhone 6s Plus khi được nâng cấp thêm camera kép cùng chức năng chụp chân dung xoá phông cực "hot". Không chỉ vậy, nâng cấp đáng giá khác như tốc độ xử lý nhanh hơn, chống nước, bụi, loa ngoài sống động... Tất cả đã tạo nên một sản phẩm hàng đầu tuyệt vời.
 
+                    
 
+                   Thiết kế hoàn thiện hơn
 
-                    iPhone 6s vẫn duy trì thiết kế tương tự với màn hình 4.7 inch và được bổ sung màu mới là vàng hồng. Màu vàng hồng trông rất hồng, nhất là khi nhìn ở nơi nhiều ánh sáng. Điện thoại này cũng được áp dụng nhiều vật liệu mới gồm khung máy bằng loại hợp kim do Apple tự chế tác và màn hình được phủ lớp kính mới được gọi Ion-X đã được dùng trước đó trên Apple Watch Sport.
-
-
-
-                    3D Touch mang lại hai cách tương tác mới với iPhone 6s được Apple gọi là "peek" và "pop". "Peek" cho phép bạn nhấn vào các biểu tượng ứng dụng và những nút khác để mở ra các đường dẫn (shortcut) trực tiếp vào những tính năng nào đó. Chẳng hạn nhấn vào ứng dụng Camera sẽ đưa đến lựa chọn mở trực tiếp vào tính năng chụp ảnh tự sướng. Nhấn vào ứng dụng Facebook sẽ đưa đến lựa chọn cập nhật trạng thái, chụp ảnh, check in hay tìm kiếm. "Pop" cho phép bạn xem ảnh và video mà không cần mở chúng lên màn hình.
+                    
 
 
 
-                    iPhone 6s được trang bị bộ vi xử lý 64-bit Apple A9 mới được tích hợp kèm cả vi xử lý chuyển động M9. Như thường lệ, Apple không công bố chi tiết về vi xử lý nhưng cho biết nó sẽ nhanh hơn 70% với tác vụ CPU và 90% với tác vụ GPU so với Apple A8 trên iPhone 6.
+                    
+
+                   Về thiết kế, vẫn là nhôm nguyên khối liền lạc nhưng iPhone 7 Plus đã có những nét thay đổi tinh tế khi đưa hai dải ăng-ten lên sát hai cạnh trên dưới, đồng thời bỏ đi jack cắm tai nghe 3.5 mm. Điểm nhấn ấn tượng nhất về ngoại hình của iPhone 7 Plus là việc Apple bỏ đi màu xám không gian từng rất được ưa chuộng trên các model cũ để bổ sung thêm tùy chọn màu đen mờ (màu đen bóng Jet Black chỉ có trên iPhone 7 Plus bản 128/256 GB).
+
+                    
+
+                   Màn hình rộng 5.5 inch, sáng hơn, nhiều màu sắc hơn
+
+                    
 
 
 
-                    Apple cũng đưa vào iPhone 6s camera sau 12MP. Đây là lần đầu tiên Apple tăng độ phân giải của camera sau kể từ chiếc iPhone 4s ra mắt vào năm 2011. Apple cho biết camera 12MP này sẽ được cải thiện khả năng lấy nét tự động, có khả năng quay video 4K và một điều không thay đổi là cụm camera vẫn lồi ở phía sau.
+                    
+
+                   iPhone 7 Plus cũng có màn hình rộng 5.5 inch độ phân giải 1080x1920 pixels tương tự iPhone 6s Plus, như vậy về kích thước tổng thể chúng ta không có gì thay đổi. Tuy nhiên, tấm nền màn hình mới đã được bổ sung thêm 25% độ sáng, đạt mức cao nhất 625 nits cùng khả năng tái tạo màu sắc, gam màu rộng hơn và hỗ trợ 3D Touch.
+
+                    
+
+                   Nút Home cảm ứng lực hoàn toàn mới
+
+                    
 
 
 
-                    Camera trước cũng thay đổi, tăng lên 5MP và dù không có đèn flash nhưng khi chụp thiếu sáng thì màn hình sáng lên gấp 3 lần để trợ sáng cho ảnh chụp. Độ sáng màn hình để trợ sáng cũng có thể tuỳ chỉnh màu để phù hợp với ánh sáng môi trường của bức ảnh chụp.
+                    
+
+                   Với chiếc điện thoại thế hệ mới, Apple đã "xoá sổ" hoàn toàn nút bấm vật lý trên màn hình iPhone. Giờ đây nút Home ở vị trí cũ đã trở thành cảm ứng, khi bạn nhấn xuống nó vẫn cảm nhận được lực nhấn và sẽ rung nhẹ để bạn biết rằng bạn đã tương tác. Apple đã sử dụng Taptic Engine trên Force Touch của Macbook cho chiếc iPhone mới này. Mặc dù vậy phím Home vẫn có cảm biến vân tay Touch ID và tích hợp nhiều tính năng bảo mật.
+
+                    
+
+                   Camera chất lượng đột phá như máy ảnh chuyên nghiệp
+
+                    
+
+
+
+                    
+
+                   iPhone 7 Plus đi kèm với một camera kép độ phân giải đồng thời 12 MP, trong số đó có một ống kính góc rộng khẩu độ lên đến f/1.8 và một ống kính zoom (tele) lên đến 10x, cùng tính năng ổn định hình ảnh quang học tự động. Nó cũng bao gồm một đèn flash 2 tông màu và đèn flash quad-LED. Camera iPhone 7 Plus hỗ trợ quay film 4K 60fps, chụp xóa phông, chụp trước lấy nét sau như một máy ảnh chuyên nghiệp. Camera trước độ phân giải 7 MP, chụp selfie tốt hơn và tự động chống rung. Bên cạnh đó, iOS 10 cũng cho phép người dùng iPhone 7 Plus chỉnh sửa, chọn lựa ảnh từ Live Photos, lưu ảnh ở định dạng RAW.
+
+                    
+
+                   Tính năng chống nước tiện lợi
+
+                    
+
+
+
+                    
+
+                   Có thể nói tính năng chống nước là điều làm hài lòng nhất các tín đồ nhà Táo. Với tiêu chuẩn chống nước IP67 sẽ giúp iPhone mới có thể sống ở độ sâu 1 mét nước trong 30 phút, vậy là từ nay bạn sẽ quên đi nỗi lo về thấm nước trên iPhone 7 Plus khi đi trong trời mưa hay lỡ tay rớt nước.
+
+                    
+
+                   Hiệu năng vượt trội với chip A10 Fusion mới
+
+                    
+
+
+
+                    
+
+                   iPhone 7 Plus sử dụng chip A10 Fusion 4 lõi, 64-bit với tốc độ cực nhanh. Apple công bố con chip này có hiệu năng xử lý cao hơn 40% so với chip A9 và gấp 2 lần so với chip A8. Đặc biệt là nó còn cao gấp 120 lần so với iPhone đời đầu. Đi cùng đó là sự nâng cấp về bộ nhớ trong, phiên bản 16 GB trước đây đã bị loại bỏ, thay vào đó chúng ta sẽ có bộ nhớ trong ban đầu từ để thoải mái lưu trữ.
+
+                    
+
+                   Âm thanh sống động cùng loa stereo
+
+                    
+
+                   Loa ngoài trên iPhone 7 Plus bất ngờ được nâng cấp khi từ dạng đơn lên loa kép Stereo, với một loa nằm ở cạnh đáy và một nằm ở cạnh trên, cho âm lượng sống động gấp hai lần trên iPhone 6s.
+
+                    
+
+                   Tăng thời lượng sử dụng pin
+
+                    
+
+                   Theo công bố từ Apple, iPhone 7 Plus có khả năng sử dụng liên tục trong thời gian hơn 1 ngày, với 60 giờ lướt web không dây và 13 giờ sử dụng mạng LTE. Tăng hơn so với iPhone 6s Plus và đảm bảo sử dụng cho cả ngày dài.
 """
                 ]
                 FirebaseDatabase.instance.ref.child("\(FirebaseTable.listPhone.table)").childByAutoId().setValue(dataDic)
@@ -157,18 +238,25 @@ extension HomeScreenVC {
 }
 extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isSearching {
+            return self.filterdata.count
+        }
         return self.dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellProduct.identifier, for: indexPath) as! CellProduct
+        if isSearching {
+            cell.updateUI(model: self.filterdata[indexPath.row])
+            return cell
+        }
         cell.updateUI(model: self.dataSource[indexPath.row])
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: (self.view.bounds.width - 48) / 2 , height: 150)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (self.view.bounds.width - 48) / 2 , height: 150)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = HomeDetail(nibName: "HomeDetail", bundle: nil)
@@ -177,10 +265,10 @@ extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
 }
-extension HomeScreenVC: CustomLayoutDelegate {
-  func heightFor(index: Int) -> CGFloat {
-
-      //Implement your own logic to return the height for specific cell
-      return CGFloat(max(1, index) * 50)
-  }
-}
+//extension HomeScreenVC: CustomLayoutDelegate {
+//  func heightFor(index: Int) -> CGFloat {
+//
+//      //Implement your own logic to return the height for specific cell
+//      return CGFloat(max(1, index) * 50)
+//  }
+//}
