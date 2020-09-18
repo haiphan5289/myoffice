@@ -57,7 +57,7 @@ extension HomeScreenVC {
         }
         self.collectionView.backgroundColor = .white
         
-        self.view.addGestureRecognizer(tap)
+
     }
     private func setupRX() {
         LoadingManager.instance.show()
@@ -262,6 +262,9 @@ extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
         let vc = HomeDetail(nibName: "HomeDetail", bundle: nil)
         vc.item = self.dataSource[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
     }
     
 }
